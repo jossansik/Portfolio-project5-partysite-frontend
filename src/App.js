@@ -1,8 +1,8 @@
 import styles from './App.module.css'
 import NavBar from './components/NavBar'
-import Container from 'react-bootstrap/Container'
-import { Route, Routes } from 'react-router-dom'
-import HomePage from './pages/home/HomePage'
+import Container from "react-bootstrap/Container";
+import { Route, Routes } from "react-router-dom";
+import HomePage from "./pages/home/HomePage";
 
 function App() {
   return (

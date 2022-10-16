@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
-import { Navbar, Container, Nav } from 'react-bootstrap'
-import styles from '../styles/NavBar.module.css'
-import { NavLink } from 'react-router-dom'
+import React, { useState } from "react";
+import { Navbar, Container, Nav } from "react-bootstrap";
+import styles from "../styles/NavBar.module.css";
+import { NavLink } from "react-router-dom";
 
 const NavBar = () => {
   const [expanded, setExpanded] = useState(false);

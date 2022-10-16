@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Londrina+Solid&display=swap');
+
+html,
+body {
+    margin: 0;
+    height: 100%;
+    font-family: 'Londrina Solid';
+    background-repeat: no-repeat;
+}
+
+html,
+body,
+body > div:first-child,
+div#__next,
+div#__next > div {
+  height: 100%;
+}
+
+body {
+  min-height: 75rem;
+  padding-top: 4.5rem;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    border: none;
+    box-sizing: border-box;
+    color: #000;
+}
+
+nav {
+  background-image: linear-gradient(to right, #5200FF , #00D1FF);
+}
+
+
+a[href^="tel:"] {
+    text-decoration: none;
+    color: #000;
+}
+
+h1 {
+    font-size: 48px;
+}
+
+@media (max-width: 768px) {
+    html,
+    body {
+        height: auto;
+    }
+}

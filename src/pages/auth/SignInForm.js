@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { axiosReq } from "../../api/axiosDefaults";
+import { useNavigate } from "react-router";
 
 import Form from "react-bootstrap/Form";
 import Alert from "react-bootstrap/Alert";
@@ -11,7 +12,12 @@ import Container from "react-bootstrap/Container";
 import styles from "../../styles/SignInUpForm.module.css";
 import appStyles from "../../App.module.css";
 
+import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
+import { setTokenTimestamp } from "../../utils/utils";
+
 function SignInForm() {
+  const setCurrentUser = useSetCurrentUser();
+  const navigate = useNavigate();
   const [signInData, setSignInData] = useState({
     username: "",
     password: "",
@@ -25,7 +31,9 @@ function SignInForm() {
 
     try {
       const { data } = await axiosReq.post("/dj-rest-auth/login/", signInData);
-      console.log(data);
+      setCurrentUser(data.user);
+      setTokenTimestamp(data);
+      navigate(-1);
     } catch (err) {
       setErrors(err.response?.data);
     }

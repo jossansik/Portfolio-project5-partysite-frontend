@@ -1,23 +1,31 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { axiosReq } from "../../api/axiosDefaults";
-import { useCurrentUser } from "../../contexts/CurrentUserContext";
+import { Image } from 'react-bootstrap'
+import { NavLink } from 'react-router-dom'
 
 const HomePage = () => {
-  const currentUser = useCurrentUser();
-  const [owner, setOwner] = useState(null);
+  const [categories, setCategories] = useState([])
 
-  const getUserInfo = async () => {
-    const { data } = await axiosReq.get("api/profiles/" + currentUser.profile_id + "/");
-    setOwner(data.owner);
-  }
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await axiosReq.get("api/categories/");
+      setCategories(result.data.results);
+    }
+
+    fetchData().catch(console.error);
+  }, [])
 
   return (
     <div>
       <h2>PREPARE FOR FUN SCARES!</h2>
-      <div>
-        <button onClick={getUserInfo}>Show owner</button>
-      </div>
-      {owner}
+      {categories.map((category) => (
+        <div className="row" key={category.id}>
+          <div>{category.name}</div>
+          <NavLink to={`/categories/${category.id}`}>
+            <Image src={category.image} fluid={true} />
+          </NavLink>
+        </div>
+      ))}
     </div>
   )
 }

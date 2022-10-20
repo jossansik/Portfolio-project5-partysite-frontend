@@ -5,6 +5,7 @@ import { Route, Routes } from "react-router-dom";
 import HomePage from "./pages/home/HomePage";
 import SignInForm from "./pages/auth/SignInForm";
 import SignUpForm from "./pages/auth/SignUpForm";
+import CategoryPage from './pages/categories/CategoryPage'
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route exact path="/" element={<HomePage />} />
           <Route exact path="/signin" element={<SignInForm />} />
           <Route exact path="/signup" element={<SignUpForm />} />
+          <Route exact path="/categories/:id" element={<CategoryPage />} />
           <Route element={<p>Page not found!</p>} />
         </Routes>
       </Container>

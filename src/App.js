@@ -6,6 +6,7 @@ import HomePage from "./pages/home/HomePage";
 import SignInForm from "./pages/auth/SignInForm";
 import SignUpForm from "./pages/auth/SignUpForm";
 import CategoryPage from './pages/categories/CategoryPage'
+import PostPage from './pages/posts/PostPage'
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route exact path="/signin" element={<SignInForm />} />
           <Route exact path="/signup" element={<SignUpForm />} />
           <Route exact path="/categories/:id" element={<CategoryPage />} />
+          <Route exact path="/posts/:id" element={<PostPage />} />
           <Route element={<p>Page not found!</p>} />
         </Routes>
       </Container>

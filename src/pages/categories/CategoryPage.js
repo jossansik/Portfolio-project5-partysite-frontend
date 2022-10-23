@@ -1,5 +1,5 @@
 import React from 'react'
-import { axiosReq } from "../../api/axiosDefaults";
+import { axiosReq } from '../../api/axiosDefaults'
 import { useEffect, useState } from 'react'
 import { Button, Image } from 'react-bootstrap'
 import { useParams, NavLink } from 'react-router-dom'
@@ -12,11 +12,15 @@ const CategoryPage = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const categoryResult = await axiosReq.get('api/categories/' + id)
+      const categoryResult = await axiosReq.get(
+        'api/categories/' + id,
+      )
       const categoryTagsResult = await axiosReq.get(
         'api/tags/?category=' + id,
       )
-      const postsResult = await axiosReq.get('api/posts/?category=' + id)
+      const postsResult = await axiosReq.get(
+        'api/posts/?category=' + id,
+      )
       setTags(categoryTagsResult?.data?.results ?? [])
       setCategory(categoryResult.data)
       setPosts(postsResult?.data?.results ?? [])
@@ -29,14 +33,20 @@ const CategoryPage = () => {
     <div>
       {category && (
         <div>
-          <h2>
-              {category.name}            
-          </h2>
+          <h2>{category.name}</h2>
           <Image src={category.image} fluid={true} />
-        </div>)}
+        </div>
+      )}
       {tags &&
         tags.length > 0 &&
         tags.map((tag) => <Button key={tag.id}>{tag.name}</Button>)}
+      {category && (
+        <NavLink to={`/posts/create/${category.id}`}>
+          <div className="mt-2">
+            <Button>New post</Button>
+          </div>
+        </NavLink>
+      )}
       {posts &&
         posts.length > 0 &&
         posts.map((post) => (

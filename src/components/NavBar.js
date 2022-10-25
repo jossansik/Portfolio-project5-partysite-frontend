@@ -41,28 +41,25 @@ const NavBar = () => {
         </NavLink>
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ml-auto text-left">
-            <NavLink className={styles.NavLink} to="/">
-              <i className="fas fa-home"></i>Home
-            </NavLink>
             {currentUser ? (
               <>
                 <NavLink
-                  className={styles.NavLink}
+                  className="nav-link"
                   to="/"
                   onClick={handleSignOut}
                 >
                   <i className="fas fa-sign-out-alt"></i>Sign out
                 </NavLink>
-                <NavLink className={styles.NavLink} to={`/profiles/`}>
-                    {currentUser?.username}
+                <NavLink className="nav-link" to={`/profiles/`}>
+                  {currentUser?.username}
                 </NavLink>
-              </>     
+              </>
             ) : (
               <>
-                <NavLink className={styles.NavLink} to="/signin">
+                <NavLink className="nav-link" to="/signin">
                   <i className="fas fa-sign-in-alt"></i>Sign in
                 </NavLink>
-                <NavLink to="/signup" className={styles.NavLink}>
+                <NavLink to="/signup" className="nav-link">
                   <i className="fas fa-user-plus"></i>Sign up
                 </NavLink>
               </>

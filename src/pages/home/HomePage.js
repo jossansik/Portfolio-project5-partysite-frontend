@@ -27,13 +27,14 @@ const HomePage = () => {
 
   return (
     <div>
-      <h2>PREPARE FOR FUN SLARES!</h2>
+      <h2 className='text-center'>PREPARE FOR FUN SLARES!</h2>
       {getCategories().map((category) => (
         <div className="row" key={category.id}>
+          <div className='text-center'>
           <div>{category.name}</div>
           <NavLink to={`/categories/${category.id}`}>
-            <Image src={category.image} fluid={true} />
-          </NavLink>
+            <Image className='rounded mx-auto d-block' src={category.image} fluid={true} />
+          </NavLink></div>
         </div>
       ))}
       <div className="row">

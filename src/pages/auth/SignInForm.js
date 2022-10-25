@@ -47,7 +47,7 @@ function SignInForm() {
   };
 
   return (
-    <Row className={styles.Row}>
+    <>
       <Col className="my-auto p-0 p-md-2" md={6}>
         <Container className={`${appStyles.Content} p-4 `}>
           <h1 className={styles.Header}>Sign in</h1>
@@ -97,7 +97,7 @@ function SignInForm() {
           </Form>
         </Container>
       </Col>
-    </Row>
+    </>
   );
 }
 

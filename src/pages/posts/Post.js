@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from '../../styles/Post.module.css'
 import { useCurrentUser } from '../../contexts/CurrentUserContext'
-import { Card, OverlayTrigger, Tooltip } from 'react-bootstrap'
+import { Image, OverlayTrigger, Tooltip } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { axiosReq } from '../../api/axiosDefaults'
 
@@ -64,20 +64,20 @@ const Post = (props) => {
   }
 
   return (
-    <Card className={styles.Post}>
-      <Card.Body>
-        <Card className="align-items-center justify-content-between">
+    <div className={styles.Post}>
+      <div>
+        <div className="align-items-center justify-content-between">
           <div className="d-flex align-items-center">
             <span>{updated_at}</span>
           </div>
-        </Card>
-        {title && <Card.Title>TITLE: {title}</Card.Title>}
-      </Card.Body>
+        </div>
+        {title && <div>TITLE: {title}</div>}
+      </div>
       <Link to={`/posts/${id}`}>
-        <Card.Img src={image} alt={title} />
+        <Image src={image} alt={title} className="img-responsive" />
       </Link>
-      <Card.Body>
-        {content && <Card.Text>DESCRIPTION: {content}</Card.Text>}
+      <div>
+        {content && <div>DESCRIPTION: {content}</div>}
         <div className={styles.PostBar}>
           {is_owner ? (
             <OverlayTrigger
@@ -110,8 +110,8 @@ const Post = (props) => {
           </Link>
           {comments_count}
         </div>
-      </Card.Body>
-    </Card>
+      </div>
+    </div>
   )
 }
 

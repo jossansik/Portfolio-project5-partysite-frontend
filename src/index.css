@@ -33,7 +33,6 @@ nav {
   background-image: linear-gradient(to right, #5200FF , #00D1FF);
 }
 
-
 a[href^="tel:"] {
     text-decoration: none;
     color: #000;
@@ -41,6 +40,15 @@ a[href^="tel:"] {
 
 h1 {
     font-size: 48px;
+}
+
+.app-container {
+  max-width: 450px;
+  margin: auto;
+}
+
+.img-responsive {
+  width: 100%;
 }
 
 @media (max-width: 768px) {

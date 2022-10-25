@@ -34,7 +34,7 @@ const CategoryPage = () => {
       {category && (
         <div>
           <h2>{category.name}</h2>
-          <Image src={category.image} fluid={true} />
+          <div>{category.description}</div>
         </div>
       )}
       {tags &&
@@ -47,19 +47,19 @@ const CategoryPage = () => {
           </div>
         </NavLink>
       )}
-      {posts &&
-        posts.length > 0 &&
-        posts.map((post) => (
-          <div key={post.id}>
-            <div>Likes: {post.likes_count}</div>
-            <div>Bookmark:</div>
-            <div>
+      <div className="row">
+        {posts &&
+          posts.length > 0 &&
+          posts.map((post) => (
+            <div key={post.id} className='col-6'>
+              <div>Likes: {post.likes_count}</div>
+              <div>Bookmark:</div>
               <NavLink to={`/posts/${post.id}`}>
-                <Image src={post.image} fluid={true} />
+                <Image src={post.image} className='img-responsive' thumbnail={true} />
               </NavLink>
             </div>
-          </div>
-        ))}
+          ))}
+      </div>
     </div>
   )
 }

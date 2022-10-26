@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { axiosReq } from "../../api/axiosDefaults";
+import axios from "axios";
 import { useNavigate } from "react-router";
 import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
 import { setTokenTimestamp } from "../../utils/utils";
@@ -8,6 +8,7 @@ import { useRedirect } from "../../hooks/useRedirect.js";
 
 const SignInForm = () => {
   useRedirect("loggedIn");
+
   const setCurrentUser = useSetCurrentUser();
   const navigate = useNavigate();
   const [signInData, setSignInData] = useState({
@@ -15,14 +16,13 @@ const SignInForm = () => {
     password: "",
   });
   const { username, password } = signInData;
-
   const [errors, setErrors] = useState({});
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     try {
-      const { data } = await axiosReq.post("/dj-rest-auth/login/", signInData);
+      const { data } = await axios.post("/dj-rest-auth/login/", signInData);
       setCurrentUser(data.user);
       setTokenTimestamp(data);
       navigate("/");

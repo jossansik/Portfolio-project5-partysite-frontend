@@ -1,22 +1,19 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-
-import styles from "../../styles/SignInUpForm.module.css";
-import appStyles from "../../App.module.css";
-
-import { Form, Button, Col, Container, Alert } from "react-bootstrap";
 import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
+import { Form, Button, Col, Container, Alert } from "react-bootstrap";
+import { useRedirect } from "../../hooks/useRedirect.js";
 
 const SignUpForm = () => {
+  useRedirect("loggedIn");
+  
   const [signUpData, setSignUpData] = useState({
     username: "",
     password1: "",
     password2: "",
   });
   const { username, password1, password2 } = signUpData;
-
   const [errors, setErrors] = useState({});
-
   const navigate = useNavigate();
 
   const handleChange = (event) => {
@@ -39,14 +36,13 @@ const SignUpForm = () => {
   return (
     <>
       <Col className="m-auto py-2 p-md-2" md={6}>
-        <Container className={`${appStyles.Content} p-4 `}>
-          <h1 className={styles.Header}>Sign up</h1>
+        <Container className={`p-4 `}>
+          <h1>Sign up</h1>
           <Form onSubmit={handleSubmit}>
             <div className="mb-3">
               <Form.Group controlId="username">
                 <Form.Label className="d-none">username</Form.Label>
                 <Form.Control
-                  className={styles.Input}
                   type="text"
                   placeholder="Username"
                   name="username"
@@ -64,7 +60,6 @@ const SignUpForm = () => {
               <Form.Group controlId="password1">
                 <Form.Label className="d-none">Password</Form.Label>
                 <Form.Control
-                  className={styles.Input}
                   type="password"
                   placeholder="Password"
                   name="password1"
@@ -82,7 +77,6 @@ const SignUpForm = () => {
               <Form.Group controlId="password2">
                 <Form.Label className="d-none">Confirm password</Form.Label>
                 <Form.Control
-                  className={styles.Input}
                   type="password"
                   placeholder="Confirm password"
                   name="password2"
@@ -104,8 +98,8 @@ const SignUpForm = () => {
             ))}
           </Form>
         </Container>
-        <Container className={`mt-3 ${appStyles.Content}`}>
-          <Link className={styles.Link} to="/signin">
+        <Container className={`mt-3`}>
+          <Link to="/signin">
             Already have an account? <span>Sign in</span>
           </Link>
         </Container>

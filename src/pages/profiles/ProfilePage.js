@@ -31,7 +31,6 @@ function ProfilePage() {
           axios.get(`api/profiles/${currentUser.profile_id}/`),
           axios.get(`api/posts/?owner__profile=${currentUser.profile_id}`),
         ]);
-        console.log(profile);
         setProfileData(profile);
         setProfilePosts(posts);
         setHasLoaded(true);

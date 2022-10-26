@@ -7,6 +7,7 @@ import { useRedirect } from "../../hooks/useRedirect.js";
 
 const CategoryPage = () => {
   useRedirect("loggedOut");
+  
   const { id } = useParams();
   const [category, setCategory] = useState(null);
   const [tags, setTags] = useState([]);

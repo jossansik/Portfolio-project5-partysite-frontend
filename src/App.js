@@ -16,7 +16,7 @@ function App() {
     <div className={styles.App}>
       <NavBar />
       <Container className={styles.Main}>
-        <Row className='app-container'>
+        <Row>
           <Routes>
             <Route exact path="/" element={<HomePage />} />
             <Route exact path="/signin" element={<SignInForm />} />

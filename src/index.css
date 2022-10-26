@@ -42,11 +42,6 @@ h1 {
     font-size: 48px;
 }
 
-.app-container {
-  max-width: 450px;
-  margin: auto;
-}
-
 .img-responsive {
   width: 100%;
 }

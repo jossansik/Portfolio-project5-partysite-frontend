@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import styles from "../../styles/SignInUpForm.module.css";
 import appStyles from "../../App.module.css";
 
-import { Form, Button, Row, Col, Container, Alert } from "react-bootstrap";
+import { Form, Button, Col, Container, Alert } from "react-bootstrap";
 import axios from "axios";
 
 const SignUpForm = () => {

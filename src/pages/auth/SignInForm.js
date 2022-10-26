@@ -1,21 +1,13 @@
 import React, { useState } from "react";
 import { axiosReq } from "../../api/axiosDefaults";
 import { useNavigate } from "react-router";
-
-import Form from "react-bootstrap/Form";
-import Alert from "react-bootstrap/Alert";
-import Button from "react-bootstrap/Button";
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
-import Container from "react-bootstrap/Container";
-
-import styles from "../../styles/SignInUpForm.module.css";
-import appStyles from "../../App.module.css";
-
 import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
 import { setTokenTimestamp } from "../../utils/utils";
+import { Form, Alert, Button, Col, Container } from "react-bootstrap";
+import { useRedirect } from "../../hooks/useRedirect.js";
 
-function SignInForm() {
+const SignInForm = () => {
+  useRedirect("loggedIn");
   const setCurrentUser = useSetCurrentUser();
   const navigate = useNavigate();
   const [signInData, setSignInData] = useState({
@@ -33,7 +25,7 @@ function SignInForm() {
       const { data } = await axiosReq.post("/dj-rest-auth/login/", signInData);
       setCurrentUser(data.user);
       setTokenTimestamp(data);
-      navigate(-1);
+      navigate("/");
     } catch (err) {
       setErrors(err.response?.data);
     }
@@ -49,8 +41,8 @@ function SignInForm() {
   return (
     <>
       <Col className="m-auto p-0 p-md-2" md={6}>
-        <Container className={`${appStyles.Content} p-4 `}>
-          <h1 className={styles.Header}>Sign in</h1>
+        <Container className={`p-4 `}>
+          <h1>Sign in</h1>
           <Form onSubmit={handleSubmit}>
             <div className="mb-3">
               <Form.Group controlId="username">
@@ -59,7 +51,6 @@ function SignInForm() {
                   type="text"
                   placeholder="Username"
                   name="username"
-                  className={styles.Input}
                   value={username}
                   onChange={handleChange}
                 />
@@ -77,7 +68,6 @@ function SignInForm() {
                   type="password"
                   placeholder="Password"
                   name="password"
-                  className={styles.Input}
                   value={password}
                   onChange={handleChange}
                 />

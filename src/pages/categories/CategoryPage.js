@@ -3,8 +3,10 @@ import { axiosReq } from "../../api/axiosDefaults";
 import { useEffect, useState } from "react";
 import { Button, Image } from "react-bootstrap";
 import { useParams, NavLink } from "react-router-dom";
+import { useRedirect } from "../../hooks/useRedirect.js";
 
 const CategoryPage = () => {
+  useRedirect("loggedOut");
   const { id } = useParams();
   const [category, setCategory] = useState(null);
   const [tags, setTags] = useState([]);

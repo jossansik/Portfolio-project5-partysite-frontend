@@ -1,4 +1,3 @@
-import styles from "./App.module.css";
 import NavBar from "./components/NavBar";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
@@ -13,9 +12,9 @@ import ProfilePage from "./pages/profiles/ProfilePage";
 
 function App() {
   return (
-    <div className={styles.App}>
+    <div>
       <NavBar />
-      <Container className={styles.Main}>
+      <Container>
         <Row>
           <Routes>
             <Route exact path="/" element={<HomePage />} />

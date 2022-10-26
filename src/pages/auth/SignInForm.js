@@ -78,7 +78,7 @@ const SignInForm = () => {
                 {message}
               </Alert>
             ))}
-            <Button type="submit">Sign in</Button>
+            <Button type="submit" className="btn btn-dark btn-lg float-end">Sign in</Button>
             {errors.non_field_errors?.map((message, idx) => (
               <Alert key={idx} variant="warning" className="mt-3">
                 {message}

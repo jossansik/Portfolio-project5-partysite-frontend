@@ -15,22 +15,16 @@ function App() {
     <div>
       <NavBar />
       <Container>
-        <Row>
-          <Routes>
-            <Route exact path="/" element={<HomePage />} />
-            <Route exact path="/signin" element={<SignInForm />} />
-            <Route exact path="/signup" element={<SignUpForm />} />
-            <Route exact path="/categories/:id" element={<CategoryPage />} />
-            <Route exact path="/posts/:id" element={<PostPage />} />
-            <Route
-              exact
-              path="/posts/create/:id"
-              element={<PostCreateForm />}
-            />
-            <Route exact path="/profiles" element={<ProfilePage />} />
-            <Route element={<p>Page not found!</p>} />
-          </Routes>
-        </Row>
+        <Routes>
+          <Route exact path="/" element={<HomePage />} />
+          <Route exact path="/signin" element={<SignInForm />} />
+          <Route exact path="/signup" element={<SignUpForm />} />
+          <Route exact path="/categories/:id" element={<CategoryPage />} />
+          <Route exact path="/posts/:id" element={<PostPage />} />
+          <Route exact path="/posts/create/:id" element={<PostCreateForm />} />
+          <Route exact path="/profiles" element={<ProfilePage />} />
+          <Route element={<p>Page not found!</p>} />
+        </Routes>
       </Container>
     </div>
   );

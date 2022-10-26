@@ -3,6 +3,7 @@ import { axiosReq } from "../../api/axiosDefaults";
 import { useEffect, useState } from "react";
 import { Image } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
+import Col from "react-bootstrap/Col";
 
 const HomePage = () => {
   const [categories, setCategories] = useState([]);
@@ -26,8 +27,8 @@ const HomePage = () => {
   };
 
   return (
-    <div>
-      <h2 className="text-center">PREPARE FOR FUN SLARES!</h2>
+    <Col className="m-auto py-2 p-0 p-lg-2" md={6}>
+      <h2 className="text-center">PREPARE FOR FUN SCARES!</h2>
       {getCategories().map((category) => (
         <div className="row" key={category.id}>
           <div className="text-center">
@@ -50,7 +51,7 @@ const HomePage = () => {
           )}
         </div>
       </div>
-    </div>
+    </Col>
   );
 };
 

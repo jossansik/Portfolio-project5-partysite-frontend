@@ -10,7 +10,7 @@ import styles from "../../styles/ProfilePage.module.css";
 import appStyles from "../../App.module.css";
 
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import axios from "axios";
+import { axiosReq } from "../../api/axiosDefaults";
 import Image from "react-bootstrap/Image";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Post from "../posts/Post";
@@ -28,8 +28,8 @@ function ProfilePage() {
     const fetchData = async () => {
       try {
         const [{ data: profile }, { data: posts }] = await Promise.all([
-          axios.get(`api/profiles/${currentUser.profile_id}/`),
-          axios.get(`api/posts/?owner__profile=${currentUser.profile_id}`),
+          axiosReq.get(`api/profiles/${currentUser.profile_id}/`),
+          axiosReq.get(`api/posts/?owner__profile=${currentUser.profile_id}`),
         ]);
         setProfileData(profile);
         setProfilePosts(posts);
@@ -73,7 +73,12 @@ function ProfilePage() {
         <InfiniteScroll
           className="row"
           children={profilePosts.results.map((post) => (
-            <Post col="col-6" key={post.id} {...post} setPosts={setProfilePosts} />
+            <Post
+              col="col-6"
+              key={post.id}
+              {...post}
+              setPosts={setProfilePosts}
+            />
           ))}
           dataLength={profilePosts.results.length}
           loader={<Asset spinner />}
@@ -90,20 +95,18 @@ function ProfilePage() {
   );
 
   return (
-    <>
-      <Col className="m-auto py-2 p-0 p-lg-2">
-        <Container className={appStyles.Content}>
-          {hasLoaded ? (
-            <>
-              {mainProfile}
-              {mainProfilePosts}
-            </>
-          ) : (
-            <Asset spinner />
-          )}
-        </Container>
-      </Col>
-    </>
+    <Col className="m-auto py-2 p-0 p-lg-2" md={6}>
+      <Container className={appStyles.Content}>
+        {hasLoaded ? (
+          <>
+            {mainProfile}
+            {mainProfilePosts}
+          </>
+        ) : (
+          <Asset spinner />
+        )}
+      </Container>
+    </Col>
   );
 }
 

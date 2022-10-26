@@ -90,7 +90,7 @@ const SignUpForm = () => {
                 {message}
               </Alert>
             ))}
-            <Button type="submit">Sign up</Button>
+            <Button type="submit" className="btn btn-dark btn-lg float-end">Sign up</Button>
             {errors.non_field_errors?.map((message, idx) => (
               <Alert key={idx} variant="warning" className="mt-3">
                 {message}

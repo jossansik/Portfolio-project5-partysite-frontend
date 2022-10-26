@@ -1,8 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
-import { Form, Button, Row, Col, Container, Alert } from "react-bootstrap";
-import btnStyles from "../../styles/Button.module.css";
+import { Form, Button, Col, Container, Alert } from "react-bootstrap";
 
 function PostCreateForm() {
   const { id } = useParams();
@@ -19,13 +18,18 @@ function PostCreateForm() {
   const { title, content, image, category } = postData;
   const [tags, setTags] = useState([]);
   const [selectedTags, setSelectedTags] = useState([]);
+  const [categoryData, setCategoryData] = useState(null);
 
   const imageInput = useRef(null);
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await axiosReq.get("api/tags/?category=" + id);
-      setTags(result.data.results);
+      const [{ data: tags }, { data: categoryData }] = await Promise.all([
+        axiosReq.get("api/tags/?category=" + id),
+        axiosReq.get(`api/categories/${id}`),
+      ]);
+      setTags(tags);
+      setCategoryData(categoryData);
     };
 
     fetchData().catch(console.error);
@@ -70,9 +74,10 @@ function PostCreateForm() {
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
-      <Row>
+    <Col className="m-auto py-2 p-0 p-lg-2" md={6}>
+      <Form onSubmit={handleSubmit}>
         <Container>
+          <h2 className="mb-4">{categoryData?.name}</h2>
           <Form.Group className="mb-3">
             <Form.Label>Title</Form.Label>
             <Form.Control
@@ -137,7 +142,7 @@ function PostCreateForm() {
               {message}
             </Alert>
           ))}
-          <Button className="btn btn-primary btn-lg float-end" type="submit">
+          <Button className="btn btn-dark btn-lg float-end" type="submit">
             Create
           </Button>
           {errors?.image?.map((message, idx) => (
@@ -146,8 +151,8 @@ function PostCreateForm() {
             </Alert>
           ))}
         </Container>
-      </Row>
-    </Form>
+      </Form>
+    </Col>
   );
 }
 

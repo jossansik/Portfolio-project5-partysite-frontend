@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { Button, Image } from "react-bootstrap";
 import { useParams, NavLink } from "react-router-dom";
 import { useRedirect } from "../../hooks/useRedirect.js";
+import { Col } from "react-bootstrap";
 
 const CategoryPage = () => {
   useRedirect("loggedOut");
@@ -15,19 +16,21 @@ const CategoryPage = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const categoryResult = await axiosReq.get("api/categories/" + id);
-      const categoryTagsResult = await axiosReq.get("api/tags/?category=" + id);
-      const postsResult = await axiosReq.get("api/posts/?category=" + id);
-      setTags(categoryTagsResult?.data?.results ?? []);
-      setCategory(categoryResult.data);
-      setPosts(postsResult?.data?.results ?? []);
+      const [{ data: categoryResult }, { data: categoryTagsResult }, { data: postsResult }] = await Promise.all([
+        axiosReq.get("api/categories/" + id),
+        axiosReq.get("api/tags/?category=" + id),
+        axiosReq.get("api/posts/?category=" + id)
+      ]);
+      setCategory(categoryResult);
+      setTags(categoryTagsResult?.results ?? []);
+      setPosts(postsResult?.results ?? []);
     };
 
     fetchData().catch(console.error);
   }, [id]);
 
   return (
-    <div>
+    <Col className="m-auto p-0 p-md-2" md={6}>
       {category && (
         <div>
           <h2>{category.name}</h2>
@@ -61,7 +64,7 @@ const CategoryPage = () => {
             </div>
           ))}
       </div>
-    </div>
+    </Col>
   );
 };
 

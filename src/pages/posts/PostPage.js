@@ -31,13 +31,13 @@ function PostPage() {
 
   return (
     <>
-      <Col className="m-auto py-2 p-0 p-lg-2">
+      <Col className="m-auto py-2 p-0 p-lg-2" md={6}>
         {category && <h3>{category.name}</h3>}
         {category?.category_tags &&
           category?.category_tags.map((item) => (
             <div key={item.id}># {item.name}</div>
           ))}
-        <Post col="col-8" {...post.results[0]} setPosts={setPost} postPage />
+        <Post {...post.results[0]} setPosts={setPost} postPage />
       </Col>
     </>
   );

@@ -1,17 +1,8 @@
 import React, { useRef, useState, useEffect } from "react";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Container from "react-bootstrap/Container";
-import Alert from "react-bootstrap/Alert";
-
-import styles from "../../styles/PostCreateEditForm.module.css";
-import appStyles from "../../App.module.css";
-import btnStyles from "../../styles/Button.module.css";
-
 import { useNavigate, useParams } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
+import { Form, Button, Row, Col, Container, Alert } from "react-bootstrap";
+import btnStyles from "../../styles/Button.module.css";
 
 function PostCreateForm() {
   const { id } = useParams();
@@ -81,91 +72,80 @@ function PostCreateForm() {
   return (
     <Form onSubmit={handleSubmit}>
       <Row>
-        <Col>
-          <Container>
-            <div>
-              <Form.Group>
-                <Form.Label>Title</Form.Label>
-                <Form.Control
-                  type="text"
-                  name="title"
-                  value={title}
-                  onChange={handleChange}
-                />
-              </Form.Group>
-              {errors?.title?.map((message, idx) => (
-                <Alert variant="warning" key={idx}>
-                  {message}
-                </Alert>
-              ))}
-              <Form.Group as={Col} controlId="my_multiselect_field">
-                <Form.Label>Select tags</Form.Label>
-                {tags && tags.length > 0 && (
-                  <Form.Control
-                    as="select"
-                    multiple
-                    value={selectedTags}
-                    onChange={(e) =>
-                      setSelectedTags(
-                        [].slice
-                          .call(e.target.selectedOptions)
-                          .map((item) => item.value)
-                      )
-                    }
-                  >
-                    {tags.map((tag) => (
-                      <option key={tag.id} value={tag.id}>
-                        {tag.name}
-                      </option>
-                    ))}
-                  </Form.Control>
-                )}
-              </Form.Group>
-              <Form.Group>
-                <Form.Label>Content</Form.Label>
-                <Form.Control
-                  as="textarea"
-                  rows={6}
-                  name="content"
-                  value={content}
-                  onChange={handleChange}
-                />
-              </Form.Group>
-              <Form.Group className="text-center">
-                <Form.Control
-                  id="image-upload"
-                  type="file"
-                  onChange={handleChangeImage}
-                  ref={imageInput}
-                />
-              </Form.Group>
-              {errors?.content?.map((message, idx) => (
-                <Alert variant="warning" key={idx}>
-                  {message}
-                </Alert>
-              ))}
-
-              <Button
-                className={`${btnStyles.Button} ${btnStyles.Blue}`}
-                onClick={() => navigate(-1)}
+        <Container>
+          <Form.Group className="mb-3">
+            <Form.Label>Title</Form.Label>
+            <Form.Control
+              type="text"
+              name="title"
+              value={title}
+              onChange={handleChange}
+            />
+          </Form.Group>
+          {errors?.title?.map((message, idx) => (
+            <Alert variant="warning" key={idx}>
+              {message}
+            </Alert>
+          ))}
+          <Form.Group
+            as={Col}
+            className="mb-3"
+            controlId="my_multiselect_field"
+          >
+            <Form.Label>Select tags</Form.Label>
+            {tags && tags.length > 0 && (
+              <Form.Control
+                as="select"
+                multiple
+                value={selectedTags}
+                onChange={(e) =>
+                  setSelectedTags(
+                    [].slice
+                      .call(e.target.selectedOptions)
+                      .map((item) => item.value)
+                  )
+                }
               >
-                cancel
-              </Button>
-              <Button
-                className={`${btnStyles.Button} ${btnStyles.Blue}`}
-                type="submit"
-              >
-                create
-              </Button>
-
-              {errors?.image?.map((message, idx) => (
-                <Alert variant="warning" key={idx}>
-                  {message}
-                </Alert>
-              ))}
-            </div>
-          </Container>
-        </Col>
+                {tags.map((tag) => (
+                  <option key={tag.id} value={tag.id}>
+                    {tag.name}
+                  </option>
+                ))}
+              </Form.Control>
+            )}
+          </Form.Group>
+          <Form.Group className="mb-3">
+            <Form.Label>Content</Form.Label>
+            <Form.Control
+              as="textarea"
+              rows={6}
+              name="content"
+              value={content}
+              onChange={handleChange}
+            />
+          </Form.Group>
+          <Form.Group className="text-center mb-3">
+            <Form.Control
+              id="image-upload"
+              type="file"
+              onChange={handleChangeImage}
+              ref={imageInput}
+            />
+          </Form.Group>
+          {errors?.content?.map((message, idx) => (
+            <Alert variant="warning" key={idx}>
+              {message}
+            </Alert>
+          ))}
+          <Button className="btn btn-primary btn-lg float-end" type="submit">
+            Create
+          </Button>
+          {errors?.image?.map((message, idx) => (
+            <Alert variant="warning" key={idx}>
+              {message}
+            </Alert>
+          ))}
+        </Container>
       </Row>
     </Form>
   );

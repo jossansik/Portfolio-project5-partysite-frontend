@@ -1,53 +1,50 @@
-import React, { useState } from 'react'
-import { axiosReq } from '../../api/axiosDefaults'
-import { useNavigate } from 'react-router'
+import React, { useState } from "react";
+import { axiosReq } from "../../api/axiosDefaults";
+import { useNavigate } from "react-router";
 
-import Form from 'react-bootstrap/Form'
-import Alert from 'react-bootstrap/Alert'
-import Button from 'react-bootstrap/Button'
-import Col from 'react-bootstrap/Col'
-import Row from 'react-bootstrap/Row'
-import Container from 'react-bootstrap/Container'
+import Form from "react-bootstrap/Form";
+import Alert from "react-bootstrap/Alert";
+import Button from "react-bootstrap/Button";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
+import Container from "react-bootstrap/Container";
 
-import styles from '../../styles/SignInUpForm.module.css'
-import appStyles from '../../App.module.css'
+import styles from "../../styles/SignInUpForm.module.css";
+import appStyles from "../../App.module.css";
 
-import { useSetCurrentUser } from '../../contexts/CurrentUserContext'
-import { setTokenTimestamp } from '../../utils/utils'
+import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
+import { setTokenTimestamp } from "../../utils/utils";
 
 function SignInForm() {
-  const setCurrentUser = useSetCurrentUser()
-  const navigate = useNavigate()
+  const setCurrentUser = useSetCurrentUser();
+  const navigate = useNavigate();
   const [signInData, setSignInData] = useState({
-    username: '',
-    password: '',
-  })
-  const { username, password } = signInData
+    username: "",
+    password: "",
+  });
+  const { username, password } = signInData;
 
-  const [errors, setErrors] = useState({})
+  const [errors, setErrors] = useState({});
 
   const handleSubmit = async (event) => {
-    event.preventDefault()
+    event.preventDefault();
 
     try {
-      const { data } = await axiosReq.post(
-        '/dj-rest-auth/login/',
-        signInData,
-      )
-      setCurrentUser(data.user)
-      setTokenTimestamp(data)
-      navigate(-1)
+      const { data } = await axiosReq.post("/dj-rest-auth/login/", signInData);
+      setCurrentUser(data.user);
+      setTokenTimestamp(data);
+      navigate(-1);
     } catch (err) {
-      setErrors(err.response?.data)
+      setErrors(err.response?.data);
     }
-  }
+  };
 
   const handleChange = (event) => {
     setSignInData({
       ...signInData,
       [event.target.name]: event.target.value,
-    })
-  }
+    });
+  };
 
   return (
     <>
@@ -101,7 +98,7 @@ function SignInForm() {
         </Container>
       </Col>
     </>
-  )
+  );
 }
 
-export default SignInForm
+export default SignInForm;

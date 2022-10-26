@@ -1,49 +1,46 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from "react";
 
-import Col from 'react-bootstrap/Col'
-import Row from 'react-bootstrap/Row'
-import Container from 'react-bootstrap/Container'
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
+import Container from "react-bootstrap/Container";
 
-import Asset from '../../components/Asset'
+import Asset from "../../components/Asset";
 
-import styles from '../../styles/ProfilePage.module.css'
-import appStyles from '../../App.module.css'
+import styles from "../../styles/ProfilePage.module.css";
+import appStyles from "../../App.module.css";
 
-import { useCurrentUser } from '../../contexts/CurrentUserContext'
-import axios from 'axios'
-import Image from 'react-bootstrap/Image'
-import InfiniteScroll from 'react-infinite-scroll-component'
-import Post from '../posts/Post'
-import { fetchMoreData } from '../../utils/utils'
-import NoResults from '../../assets/no-results.png'
+import { useCurrentUser } from "../../contexts/CurrentUserContext";
+import axios from "axios";
+import Image from "react-bootstrap/Image";
+import InfiniteScroll from "react-infinite-scroll-component";
+import Post from "../posts/Post";
+import { fetchMoreData } from "../../utils/utils";
+import NoResults from "../../assets/no-results.png";
 
 function ProfilePage() {
-  const [hasLoaded, setHasLoaded] = useState(false)
-  const [profilePosts, setProfilePosts] = useState({ results: [] })
-  const [profileData, setProfileData] = useState({ results: [] })
+  const [hasLoaded, setHasLoaded] = useState(false);
+  const [profilePosts, setProfilePosts] = useState({ results: [] });
+  const [profileData, setProfileData] = useState({ results: [] });
 
-  const currentUser = useCurrentUser()
+  const currentUser = useCurrentUser();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [{ data: profile }, { data: posts }] =
-          await Promise.all([
-            axios.get(`api/profiles/${currentUser.profile_id}/`),
-            axios.get(
-              `api/posts/?owner__profile=${currentUser.profile_id}`,
-            ),
-          ])
-        console.log(profile)
-        setProfileData(profile)
-        setProfilePosts(posts)
-        setHasLoaded(true)
+        const [{ data: profile }, { data: posts }] = await Promise.all([
+          axios.get(`api/profiles/${currentUser.profile_id}/`),
+          axios.get(`api/posts/?owner__profile=${currentUser.profile_id}`),
+        ]);
+        console.log(profile);
+        setProfileData(profile);
+        setProfilePosts(posts);
+        setHasLoaded(true);
       } catch (err) {
-        console.log(err)
+        console.log(err);
       }
-    }
-    fetchData()
-  }, [currentUser])
+    };
+    fetchData();
+  }, [currentUser]);
 
   const mainProfile = (
     <>
@@ -69,7 +66,7 @@ function ProfilePage() {
         )}
       </Row>
     </>
-  )
+  );
 
   const mainProfilePosts = (
     <>
@@ -79,11 +76,7 @@ function ProfilePage() {
       {profilePosts.results.length ? (
         <InfiniteScroll
           children={profilePosts.results.map((post) => (
-            <Post
-              key={post.id}
-              {...post}
-              setPosts={setProfilePosts}
-            />
+            <Post key={post.id} {...post} setPosts={setProfilePosts} />
           ))}
           dataLength={profilePosts.results.length}
           loader={<Asset spinner />}
@@ -97,7 +90,7 @@ function ProfilePage() {
         />
       )}
     </>
-  )
+  );
 
   return (
     <Row>
@@ -114,7 +107,7 @@ function ProfilePage() {
         </Container>
       </Col>
     </Row>
-  )
+  );
 }
 
-export default ProfilePage
+export default ProfilePage;

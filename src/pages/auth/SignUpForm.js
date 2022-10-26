@@ -1,47 +1,40 @@
-import React, { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
-import styles from '../../styles/SignInUpForm.module.css'
-import appStyles from '../../App.module.css'
+import styles from "../../styles/SignInUpForm.module.css";
+import appStyles from "../../App.module.css";
 
-import {
-  Form,
-  Button,
-  Row,
-  Col,
-  Container,
-  Alert,
-} from 'react-bootstrap'
-import axios from 'axios'
+import { Form, Button, Row, Col, Container, Alert } from "react-bootstrap";
+import axios from "axios";
 
 const SignUpForm = () => {
   const [signUpData, setSignUpData] = useState({
-    username: '',
-    password1: '',
-    password2: '',
-  })
-  const { username, password1, password2 } = signUpData
+    username: "",
+    password1: "",
+    password2: "",
+  });
+  const { username, password1, password2 } = signUpData;
 
-  const [errors, setErrors] = useState({})
+  const [errors, setErrors] = useState({});
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleChange = (event) => {
     setSignUpData({
       ...signUpData,
       [event.target.name]: event.target.value,
-    })
-  }
+    });
+  };
 
   const handleSubmit = async (event) => {
-    event.preventDefault()
+    event.preventDefault();
     try {
-      await axios.post('/dj-rest-auth/registration/', signUpData)
-      navigate('/signin')
+      await axios.post("/dj-rest-auth/registration/", signUpData);
+      navigate("/signin");
     } catch (err) {
-      setErrors(err.response?.data)
+      setErrors(err.response?.data);
     }
-  }
+  };
 
   return (
     <>
@@ -87,9 +80,7 @@ const SignUpForm = () => {
             ))}
             <div className="mb-3">
               <Form.Group controlId="password2">
-                <Form.Label className="d-none">
-                  Confirm password
-                </Form.Label>
+                <Form.Label className="d-none">Confirm password</Form.Label>
                 <Form.Control
                   className={styles.Input}
                   type="password"
@@ -120,7 +111,7 @@ const SignUpForm = () => {
         </Container>
       </Col>
     </>
-  )
-}
+  );
+};
 
-export default SignUpForm
+export default SignUpForm;

@@ -1,9 +1,9 @@
-import React from 'react'
-import styles from '../../styles/Post.module.css'
-import { useCurrentUser } from '../../contexts/CurrentUserContext'
-import { Image, OverlayTrigger, Tooltip } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
-import { axiosReq } from '../../api/axiosDefaults'
+import React from "react";
+import styles from "../../styles/Post.module.css";
+import { useCurrentUser } from "../../contexts/CurrentUserContext";
+import { Image, OverlayTrigger, Tooltip } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import { axiosReq } from "../../api/axiosDefaults";
 
 const Post = (props) => {
   const {
@@ -18,14 +18,14 @@ const Post = (props) => {
     updated_at,
     postPage,
     setPosts,
-  } = props
+  } = props;
 
-  const currentUser = useCurrentUser()
-  const is_owner = currentUser?.username === owner
+  const currentUser = useCurrentUser();
+  const is_owner = currentUser?.username === owner;
 
   const handleLike = async () => {
     try {
-      const { data } = await axiosReq.post('api/likes/', { post: id })
+      const { data } = await axiosReq.post("api/likes/", { post: id });
       setPosts((prevPosts) => ({
         ...prevPosts,
         results: prevPosts.results.map((post) => {
@@ -35,17 +35,17 @@ const Post = (props) => {
                 likes_count: post.likes_count + 1,
                 like_id: data.id,
               }
-            : post
+            : post;
         }),
-      }))
+      }));
     } catch (err) {
-      console.log(err)
+      console.log(err);
     }
-  }
+  };
 
   const handleUnlike = async () => {
     try {
-      await axiosReq.delete(`api/likes/${like_id}/`)
+      await axiosReq.delete(`api/likes/${like_id}/`);
       setPosts((prevPosts) => ({
         ...prevPosts,
         results: prevPosts.results.map((post) => {
@@ -55,13 +55,13 @@ const Post = (props) => {
                 likes_count: post.likes_count - 1,
                 like_id: null,
               }
-            : post
+            : post;
         }),
-      }))
+      }));
     } catch (err) {
-      console.log(err)
+      console.log(err);
     }
-  }
+  };
 
   return (
     <div className={styles.Post}>
@@ -82,9 +82,7 @@ const Post = (props) => {
           {is_owner ? (
             <OverlayTrigger
               placement="top"
-              overlay={
-                <Tooltip>You can't like your own post!</Tooltip>
-              }
+              overlay={<Tooltip>You can't like your own post!</Tooltip>}
             >
               <i className="far fa-heart" />
             </OverlayTrigger>
@@ -112,7 +110,7 @@ const Post = (props) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Post
+export default Post;

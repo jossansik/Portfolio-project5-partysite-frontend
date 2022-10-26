@@ -1,28 +1,28 @@
-import React, { useState } from 'react'
-import { Navbar, Container, Nav } from 'react-bootstrap'
+import React, { useState } from "react";
+import { Navbar, Container, Nav } from "react-bootstrap";
 import {
   useCurrentUser,
   useSetCurrentUser,
-} from '../contexts/CurrentUserContext'
-import { axiosReq } from '../api/axiosDefaults'
-import styles from '../styles/NavBar.module.css'
-import { removeTokenTimestamp } from '../utils/utils'
-import { NavLink } from 'react-router-dom'
+} from "../contexts/CurrentUserContext";
+import { axiosReq } from "../api/axiosDefaults";
+import styles from "../styles/NavBar.module.css";
+import { removeTokenTimestamp } from "../utils/utils";
+import { NavLink } from "react-router-dom";
 
 const NavBar = () => {
-  const currentUser = useCurrentUser()
-  const setCurrentUser = useSetCurrentUser()
-  const [expanded, setExpanded] = useState(false)
+  const currentUser = useCurrentUser();
+  const setCurrentUser = useSetCurrentUser();
+  const [expanded, setExpanded] = useState(false);
 
   const handleSignOut = async () => {
     try {
-      await axiosReq.post('dj-rest-auth/logout/', null)
-      setCurrentUser(null)
-      removeTokenTimestamp()
+      await axiosReq.post("dj-rest-auth/logout/", null);
+      setCurrentUser(null);
+      removeTokenTimestamp();
     } catch (err) {
-      console.log(err)
+      console.log(err);
     }
-  }
+  };
 
   return (
     <Navbar
@@ -43,11 +43,7 @@ const NavBar = () => {
           <Nav className="ml-auto text-left">
             {currentUser ? (
               <>
-                <NavLink
-                  className="nav-link"
-                  to="/"
-                  onClick={handleSignOut}
-                >
+                <NavLink className="nav-link" to="/" onClick={handleSignOut}>
                   <i className="fas fa-sign-out-alt"></i>Sign out
                 </NavLink>
                 <NavLink className="nav-link" to={`/profiles/`}>
@@ -68,7 +64,7 @@ const NavBar = () => {
         </Navbar.Collapse>
       </Container>
     </Navbar>
-  )
-}
+  );
+};
 
-export default NavBar
+export default NavBar;

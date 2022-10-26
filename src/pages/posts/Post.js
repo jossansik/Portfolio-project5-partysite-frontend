@@ -18,6 +18,7 @@ const Post = (props) => {
     updated_at,
     postPage,
     setPosts,
+    col,
   } = props;
 
   const currentUser = useCurrentUser();
@@ -64,7 +65,7 @@ const Post = (props) => {
   };
 
   return (
-    <div className={styles.Post}>
+    <div className={col}>
       <div>
         <div className="align-items-center justify-content-between">
           <div className="d-flex align-items-center">

@@ -44,14 +44,14 @@ function ProfilePage() {
   const mainProfile = (
     <>
       <Row className="px-3 text-center">
-        <Col lg={3} className="text-lg-left">
+        <div>
           <Image
             className={styles.ProfileImage}
             roundedCircle
             src={profileData?.image}
           />
-        </Col>
-        <Col lg={6}>
+        </div>
+        <div>
           <h3 className="m-2">{profileData?.owner}</h3>
           <Row className="justify-content-center no-gutters">
             <Col xs={3} className="my-2">
@@ -59,10 +59,7 @@ function ProfilePage() {
               <div>posts</div>
             </Col>
           </Row>
-        </Col>
-        {profileData?.content && (
-          <Col className="p-3">{profileData.content}</Col>
-        )}
+        </div>
       </Row>
     </>
   );
@@ -74,8 +71,9 @@ function ProfilePage() {
       <hr />
       {profilePosts.results.length ? (
         <InfiniteScroll
+          className="row"
           children={profilePosts.results.map((post) => (
-            <Post key={post.id} {...post} setPosts={setProfilePosts} />
+            <Post col="col-6" key={post.id} {...post} setPosts={setProfilePosts} />
           ))}
           dataLength={profilePosts.results.length}
           loader={<Asset spinner />}
@@ -92,8 +90,8 @@ function ProfilePage() {
   );
 
   return (
-    <Row>
-      <Col className="py-2 p-0 p-lg-2" lg={8}>
+    <>
+      <Col className="m-auto py-2 p-0 p-lg-2">
         <Container className={appStyles.Content}>
           {hasLoaded ? (
             <>
@@ -105,7 +103,7 @@ function ProfilePage() {
           )}
         </Container>
       </Col>
-    </Row>
+    </>
   );
 }
 

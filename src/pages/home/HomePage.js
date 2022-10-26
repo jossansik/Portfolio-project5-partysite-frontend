@@ -34,9 +34,8 @@ const HomePage = () => {
             <div>{category.name}</div>
             <NavLink to={`/categories/${category.id}`}>
               <Image
-                className="rounded mx-auto d-block"
+                className="rounded mx-auto d-block img-responsive"
                 src={category.image}
-                fluid={true}
               />
             </NavLink>
           </div>

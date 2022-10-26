@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
 import { useParams } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
 import Post from "./Post";
@@ -31,16 +30,16 @@ function PostPage() {
   }, [id]);
 
   return (
-    <Row className="h-100">
-      <Col className="py-2 p-0 p-lg-2" lg={8}>
+    <>
+      <Col className="m-auto py-2 p-0 p-lg-2">
         {category && <h3>{category.name}</h3>}
         {category?.category_tags &&
           category?.category_tags.map((item) => (
             <div key={item.id}># {item.name}</div>
           ))}
-        <Post {...post.results[0]} setPosts={setPost} postPage />
+        <Post col="col-8" {...post.results[0]} setPosts={setPost} postPage />
       </Col>
-    </Row>
+    </>
   );
 }
 

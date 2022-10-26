@@ -40,7 +40,7 @@ const NavBar = () => {
           <Navbar.Brand>IMG</Navbar.Brand>
         </NavLink>
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="ml-auto text-left">
+          <Nav className="navbar-nav ms-auto mb-2 mb-lg-0">
             {currentUser ? (
               <>
                 <NavLink className="nav-link" to="/" onClick={handleSignOut}>

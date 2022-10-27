@@ -37,7 +37,7 @@ const NavBar = () => {
           aria-controls="basic-navbar-nav"
         />
         <NavLink to="/">
-          <Navbar.Brand><img src={Brand} alt="brand"></img></Navbar.Brand>
+          <Navbar.Brand><img src={Brand} width={80} alt="brand"></img></Navbar.Brand>
         </NavLink>
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="navbar-nav ms-auto mb-2 mb-lg-0">

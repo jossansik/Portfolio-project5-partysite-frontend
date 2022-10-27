@@ -5,9 +5,9 @@ import {
   useSetCurrentUser,
 } from "../contexts/CurrentUserContext";
 import { axiosReq } from "../api/axiosDefaults";
-import styles from "../styles/NavBar.module.css";
 import { removeTokenTimestamp } from "../utils/utils";
 import { NavLink } from "react-router-dom";
+import Brand from "../assets/PARTYPEOPLE.png";
 
 const NavBar = () => {
   const currentUser = useCurrentUser();
@@ -27,7 +27,7 @@ const NavBar = () => {
   return (
     <Navbar
       expanded={expanded}
-      className={styles.NavBar}
+      className="navbar-dark bg-dark"
       expand="md"
       fixed="top"
     >
@@ -37,7 +37,7 @@ const NavBar = () => {
           aria-controls="basic-navbar-nav"
         />
         <NavLink to="/">
-          <Navbar.Brand>IMG</Navbar.Brand>
+          <Navbar.Brand><img src={Brand} alt="brand"></img></Navbar.Brand>
         </NavLink>
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="navbar-nav ms-auto mb-2 mb-lg-0">

@@ -26,16 +26,16 @@ body {
     padding: 0;
     border: none;
     box-sizing: border-box;
-    color: #000;
+    /* color: #000; */
 }
 
 nav {
-  background-image: linear-gradient(to right, #5200FF , #00D1FF);
+  background-color: #1F1F1F;
+  color: #FFF;
 }
 
-a[href^="tel:"] {
-    text-decoration: none;
-    color: #000;
+nav a {
+  color: #FFF;
 }
 
 h1 {

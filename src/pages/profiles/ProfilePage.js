@@ -77,7 +77,7 @@ function ProfilePage() {
   const mainProfilePosts = (
     <>
       <hr />
-      <p className="text-center">{profileData?.owner}'s posts</p>
+      <p className="text-center">Posts</p>
       <hr />
       {profilePosts.results.length ? (
         <InfiniteScroll
@@ -98,7 +98,7 @@ function ProfilePage() {
       ) : (
         <Asset
           src={NoResults}
-          message={`No results found, ${profileData?.owner} hasn't posted yet.`}
+          message={`No results found you have not posted anything yet.`}
         />
       )}
     </>

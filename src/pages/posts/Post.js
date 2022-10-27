@@ -77,9 +77,9 @@ const Post = (props) => {
       <Link to={`/posts/${id}`}>
         <Image src={image} alt={title} className="img-responsive" />
       </Link>
-      <div>
-        {content && <div>DESCRIPTION: {content}</div>}
-        <div className={styles.PostBar}>
+      <div className="row mt-2 mb-4">
+        {content && <div className="col">DESCRIPTION: {content}</div>}
+        <div className="col text-end">
           {is_owner ? (
             <OverlayTrigger
               placement="top"

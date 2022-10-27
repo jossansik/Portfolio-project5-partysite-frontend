@@ -1,5 +1,4 @@
 import NavBar from "./components/NavBar";
-import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 import { Route, Routes } from "react-router-dom";
 import HomePage from "./pages/home/HomePage";
@@ -9,6 +8,7 @@ import CategoryPage from "./pages/categories/CategoryPage";
 import PostPage from "./pages/posts/PostPage";
 import PostCreateForm from "./pages/posts/PostCreateForm";
 import ProfilePage from "./pages/profiles/ProfilePage";
+import ProfileEditForm from "./pages/profiles/ProfileEditForm";
 
 function App() {
   return (
@@ -23,6 +23,7 @@ function App() {
           <Route exact path="/posts/:id" element={<PostPage />} />
           <Route exact path="/posts/create/:id" element={<PostCreateForm />} />
           <Route exact path="/profiles" element={<ProfilePage />} />
+          <Route exact path="/profiles/:id/edit" element={<ProfileEditForm />} />
           <Route element={<p>Page not found!</p>} />
         </Routes>
       </Container>

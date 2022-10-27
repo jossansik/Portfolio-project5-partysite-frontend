@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
@@ -16,6 +17,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import Post from "../posts/Post";
 import { fetchMoreData } from "../../utils/utils";
 import NoResults from "../../assets/no-results.png";
+import { Button } from "react-bootstrap";
 
 function ProfilePage() {
   const [hasLoaded, setHasLoaded] = useState(false);
@@ -60,6 +62,14 @@ function ProfilePage() {
             </Col>
           </Row>
         </div>
+      {profileData?.is_owner && (
+        <Link
+          to={`/profiles/${profileData?.id}/edit`}
+        >
+        <Button className="btn btn-dark btn-lg float-end btn btn-primary">
+           Edit profile
+        </Button></Link>
+      )}
       </Row>
     </>
   );

@@ -96,8 +96,8 @@ const CategoryPage = () => {
       </div>
       {category && (
         <NavLink to={`/posts/create/${category.id}`}>
-          <div className="mt-2">
-            <Button>New post</Button>
+          <div className="mt-2 text-end">
+            <Button className="btn btn-dark">New post +</Button>
           </div>
         </NavLink>
       )}

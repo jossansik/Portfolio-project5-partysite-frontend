@@ -7,7 +7,7 @@ import {
 import { axiosReq } from "../api/axiosDefaults";
 import { removeTokenTimestamp } from "../utils/utils";
 import { NavLink } from "react-router-dom";
-import Brand from "../assets/logo.png";
+import Brand from "../assets/logo.webp";
 
 const NavBar = () => {
   const currentUser = useCurrentUser();

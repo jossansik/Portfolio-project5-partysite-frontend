@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { axiosReq } from "../../api/axiosDefaults";
 import { useEffect, useState } from "react";
 import { Button, Image } from "react-bootstrap";
@@ -8,18 +8,23 @@ import { Col } from "react-bootstrap";
 
 const CategoryPage = () => {
   useRedirect("loggedOut");
-  
+
   const { id } = useParams();
   const [category, setCategory] = useState(null);
   const [tags, setTags] = useState([]);
   const [posts, setPosts] = useState([]);
+  const [selectedTags, setSelectedTags] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
-      const [{ data: categoryResult }, { data: categoryTagsResult }, { data: postsResult }] = await Promise.all([
+      const [
+        { data: categoryResult },
+        { data: categoryTagsResult },
+        { data: postsResult },
+      ] = await Promise.all([
         axiosReq.get("api/categories/" + id),
         axiosReq.get("api/tags/?category=" + id),
-        axiosReq.get("api/posts/?category=" + id)
+        axiosReq.get("api/posts/?category=" + id),
       ]);
       setCategory(categoryResult);
       setTags(categoryTagsResult?.results ?? []);
@@ -29,6 +34,34 @@ const CategoryPage = () => {
     fetchData().catch(console.error);
   }, [id]);
 
+  const addTag = (tagId) => {
+    if (!selectedTags.includes(tagId)) {
+      return setSelectedTags((prevTags) => [...prevTags, tagId]);
+    }
+  };
+
+  const deleteTag = (tagId) => {
+    const tagsFiltered = selectedTags.filter((tag) => {
+      return tag !== tagId;
+    });
+    setSelectedTags(tagsFiltered);
+  };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const searchParamsArray = selectedTags.map((tag) => {
+        return "&post_tags=" + tag;
+      });
+
+      const searchParams = searchParamsArray.join("");
+      const url = "api/posts/?category=" + id + searchParams;
+      const postsResult = await axiosReq.get(url);
+      setPosts(postsResult?.data?.results ?? []);
+    };
+
+    fetchData().catch(console.error);
+  }, [id, selectedTags]);
+
   return (
     <Col className="m-auto p-0 p-md-2" md={6}>
       {category && (
@@ -37,9 +70,30 @@ const CategoryPage = () => {
           <div>{category.description}</div>
         </div>
       )}
-      {tags &&
-        tags.length > 0 &&
-        tags.map((tag) => <Button key={tag.id}>{tag.name}</Button>)}
+      <div className="d-flex align-content-start flex-wrap pt-2 pb-2">
+        <span className="pe-2">Filter on tags:</span>
+        {tags &&
+          tags.length > 0 &&
+          tags.map((tag) => (
+            <div key={tag.id} className="form-check form-switch pe-2">
+              <input
+                className="form-check-input"
+                type="checkbox"
+                role="switch"
+                id={tag.id}
+                onChange={() =>
+                  selectedTags.includes(tag.id)
+                    ? deleteTag(tag.id)
+                    : addTag(tag.id)
+                }
+                value={tag.id}
+              />
+              <label className="form-check-label" htmlFor={tag.id}>
+                {tag.name}
+              </label>
+            </div>
+          ))}
+      </div>
       {category && (
         <NavLink to={`/posts/create/${category.id}`}>
           <div className="mt-2">

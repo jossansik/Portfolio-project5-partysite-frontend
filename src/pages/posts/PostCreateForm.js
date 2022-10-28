@@ -28,7 +28,7 @@ function PostCreateForm() {
         axiosReq.get("api/tags/?category=" + id),
         axiosReq.get(`api/categories/${id}`),
       ]);
-      setTags(tags);
+      setTags(tags?.results ?? []);
       setCategoryData(categoryData);
     };
 

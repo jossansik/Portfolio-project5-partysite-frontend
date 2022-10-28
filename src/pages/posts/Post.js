@@ -1,5 +1,4 @@
 import React from "react";
-import styles from "../../styles/Post.module.css";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { Image, OverlayTrigger, Tooltip } from "react-bootstrap";
 import { Link } from "react-router-dom";
@@ -12,6 +11,8 @@ const Post = (props) => {
     comments_count,
     likes_count,
     like_id,
+    bookmarks_count,
+    bookmark_id,
     title,
     content,
     image,
@@ -64,6 +65,46 @@ const Post = (props) => {
     }
   };
 
+  const handleBookmark = async () => {
+    try {
+      const { data } = await axiosReq.post("api/bookmarks/", { post: id });
+      setPosts((prevPosts) => ({
+        ...prevPosts,
+        results: prevPosts.results.map((post) => {
+          return post.id === id
+            ? {
+                ...post,
+                bookmarks_count: post.bookmarks_count + 1,
+                bookmark_id: data.id,
+              }
+            : post;
+        }),
+      }));
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const handleUnbookmark = async () => {
+    try {
+      await axiosReq.delete(`api/bookmarks/${bookmark_id}/`);
+      setPosts((prevPosts) => ({
+        ...prevPosts,
+        results: prevPosts.results.map((post) => {
+          return post.id === id
+            ? {
+                ...post,
+                bookmarks_count: post.bookmarks_count - 1,
+                bookmark_id: null,
+              }
+            : post;
+        }),
+      }));
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <div className={col}>
       <div>
@@ -89,11 +130,11 @@ const Post = (props) => {
             </OverlayTrigger>
           ) : like_id ? (
             <span onClick={handleUnlike}>
-              <i className={`fas fa-heart ${styles.Heart}`} />
+              <i className={`fas fa-heart`} />
             </span>
           ) : currentUser ? (
             <span onClick={handleLike}>
-              <i className={`far fa-heart ${styles.HeartOutline}`} />
+              <i className={`far fa-heart`} />
             </span>
           ) : (
             <OverlayTrigger
@@ -103,7 +144,34 @@ const Post = (props) => {
               <i className="far fa-heart" />
             </OverlayTrigger>
           )}
-          {likes_count}
+          <span className="pe-2">
+          {likes_count}</span>
+          {is_owner ? (
+            <OverlayTrigger
+              placement="top"
+              overlay={<Tooltip>You can't bookmark your own post!</Tooltip>}
+            >
+              <i className="far fa-bookmark" />
+            </OverlayTrigger>
+          ) : bookmark_id ? (
+            <span onClick={handleUnbookmark}>
+              <i className={`fas fa-bookmark`} />
+            </span>
+          ) : currentUser ? (
+            <span onClick={handleBookmark}>
+              <i className={`far fa-bookmark`} />
+            </span>
+          ) : (
+            <OverlayTrigger
+              placement="top"
+              overlay={<Tooltip>Log in to like posts!</Tooltip>}
+            >
+              <i className="far fa-heart" />
+            </OverlayTrigger>
+          )}
+          <span className="pe-2">
+            {bookmarks_count}
+          </span>
           <Link to={`/posts/${id}`}>
             <i className="far fa-comments" />
           </Link>

@@ -32,7 +32,7 @@ const HomePage = () => {
       {getCategories().map((category) => (
         <div className="row" key={category.id}>
           <div className="text-center">
-            <div>{category.name}</div>
+            <div test-id={`category_page_${category.id}`}>{category.name}</div>
             <NavLink to={`/categories/${category.id}`}>
               <Image
                 className="rounded mx-auto d-block img-responsive"

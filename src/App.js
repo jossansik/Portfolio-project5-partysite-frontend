@@ -9,6 +9,7 @@ import PostPage from "./pages/posts/PostPage";
 import PostCreateForm from "./pages/posts/PostCreateForm";
 import ProfilePage from "./pages/profiles/ProfilePage";
 import ProfileEditForm from "./pages/profiles/ProfileEditForm";
+import ProfileBookmarksPage from "./pages/profiles/ProfileBookmarksPage";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route exact path="/posts/create/:id" element={<PostCreateForm />} />
           <Route exact path="/profiles" element={<ProfilePage />} />
           <Route exact path="/profiles/:id/edit" element={<ProfileEditForm />} />
+          <Route exact path="/profiles/:id/bookmarks" element={<ProfileBookmarksPage />} />
           <Route element={<p>Page not found!</p>} />
         </Routes>
       </Container>

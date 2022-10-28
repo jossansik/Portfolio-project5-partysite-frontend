@@ -17,8 +17,8 @@ const Post = (props) => {
     content,
     image,
     updated_at,
-    postPage,
     setPosts,
+    bookmarkUnmarked,
     col,
   } = props;
 
@@ -103,6 +103,7 @@ const Post = (props) => {
     } catch (err) {
       console.log(err);
     }
+    bookmarkUnmarked()
   };
 
   return (

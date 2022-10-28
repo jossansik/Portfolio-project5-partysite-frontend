@@ -46,6 +46,9 @@ const NavBar = () => {
                 <NavLink className="nav-link" to="/" onClick={handleSignOut}>
                   <i className="fas fa-sign-out-alt"></i>Sign out
                 </NavLink>
+                <NavLink className="nav-link" to={`/profiles/${currentUser?.profile_id}/bookmarks`}>
+                  <i className={`fas fa-bookmark`} />
+                </NavLink>
                 <NavLink className="nav-link" to={`/profiles/`}>
                   {currentUser?.username}
                 </NavLink>

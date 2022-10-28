@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { Image } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import Col from "react-bootstrap/Col";
+import CloudImage from "../../assets/cloudy.webp";
 
 const HomePage = () => {
   const [categories, setCategories] = useState([]);
@@ -28,7 +29,10 @@ const HomePage = () => {
 
   return (
     <Col className="m-auto py-2 p-0 p-lg-2" md={6}>
-      <h2 className="text-center">PREPARE FOR FUN SCARES!</h2>
+      <Image
+        className="rounded mx-auto d-block img-responsive"
+        src={CloudImage}
+      />
       {getCategories().map((category) => (
         <div className="row" key={category.id}>
           <div className="text-center">

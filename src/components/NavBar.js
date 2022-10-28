@@ -7,7 +7,7 @@ import {
 import { axiosReq } from "../api/axiosDefaults";
 import { removeTokenTimestamp } from "../utils/utils";
 import { NavLink } from "react-router-dom";
-import Brand from "../assets/PARTYPEOPLE.png";
+import Brand from "../assets/logo.png";
 
 const NavBar = () => {
   const currentUser = useCurrentUser();
@@ -38,7 +38,7 @@ const NavBar = () => {
         />
         <NavLink to="/">
           <Navbar.Brand>
-            <img src={Brand} width={80} alt="brand"></img>
+            <img src={Brand} width={160} alt="brand"></img>
           </Navbar.Brand>
         </NavLink>
         <Navbar.Collapse id="basic-navbar-nav">
@@ -46,7 +46,7 @@ const NavBar = () => {
             {currentUser ? (
               <>
                 <NavLink className="nav-link" to="/" onClick={handleSignOut}>
-                  <i className="fas fa-sign-out-alt"></i>Sign out
+                  <i className="fas fa-sign-out-alt pe-2"></i>Sign out
                 </NavLink>
                 <NavLink
                   className="nav-link"
@@ -61,10 +61,10 @@ const NavBar = () => {
             ) : (
               <>
                 <NavLink className="nav-link" to="/signin">
-                  <i className="fas fa-sign-in-alt"></i>Sign in
+                  <i className="fas fa-sign-in-alt pe-2"></i>Sign in
                 </NavLink>
                 <NavLink to="/signup" className="nav-link">
-                  <i className="fas fa-user-plus"></i>Sign up
+                  <i className="fas fa-user-plus pe-2"></i>Sign up
                 </NavLink>
               </>
             )}

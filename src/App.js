@@ -10,12 +10,13 @@ import PostCreateForm from "./pages/posts/PostCreateForm";
 import ProfilePage from "./pages/profiles/ProfilePage";
 import ProfileEditForm from "./pages/profiles/ProfileEditForm";
 import ProfileBookmarksPage from "./pages/profiles/ProfileBookmarksPage";
+import styles from "./App.module.css"
 
 function App() {
   return (
     <div>
       <NavBar />
-      <Container>
+      <Container className={styles.App}>
         <Routes>
           <Route exact path="/" element={<HomePage />} />
           <Route exact path="/signin" element={<SignInForm />} />

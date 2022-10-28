@@ -1,7 +1,7 @@
 import React from "react";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import { Image, OverlayTrigger, Tooltip } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Button, Image, OverlayTrigger, Tooltip } from "react-bootstrap";
+import { Link, useNavigate } from "react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
 
 const Post = (props) => {
@@ -23,7 +23,17 @@ const Post = (props) => {
   } = props;
 
   const currentUser = useCurrentUser();
+  const navigate = useNavigate();
   const is_owner = currentUser?.username === owner;
+
+  const handleDelete = async () => {
+    try {
+      await axiosReq.delete(`api/posts/${id}/`);
+      navigate(-1);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   const handleLike = async () => {
     try {
@@ -109,12 +119,23 @@ const Post = (props) => {
   return (
     <div className={col}>
       <div>
-        <div className="align-items-center justify-content-between">
-          <div className="d-flex align-items-center">
-            <span>{updated_at}</span>
+        <div className="row">
+          <div className="col">
+            <div className="align-items-center justify-content-between">
+              <div className="d-flex align-items-center">
+                <span>{updated_at}</span>
+              </div>
+            </div>
+            {title && <div>TITLE: {title}</div>}
           </div>
+          {is_owner && (
+            <div className="col text-end">
+              <Button className="btn btn-dark" onClick={handleDelete}>
+                Delete
+              </Button>
+            </div>
+          )}
         </div>
-        {title && <div>TITLE: {title}</div>}
       </div>
       <Link to={`/posts/${id}`}>
         <Image src={image} alt={title} className="img-responsive" />

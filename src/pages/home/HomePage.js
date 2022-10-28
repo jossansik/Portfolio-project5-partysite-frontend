@@ -1,5 +1,5 @@
 import React from "react";
-import { axiosReq } from "../../api/axiosDefaults";
+import axios from "axios";
 import { useEffect, useState } from "react";
 import { Image } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
@@ -12,7 +12,7 @@ const HomePage = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await axiosReq.get("api/categories/");
+      const result = await axios.get("api/categories/");
       setCategories(result.data.results);
     };
 

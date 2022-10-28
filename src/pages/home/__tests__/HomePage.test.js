@@ -12,6 +12,6 @@ test("expect Halloween to be found as category", async () => {
     </Router>
   );
 
-  const categoryName = await screen.findByText("Halloween")
+  const categoryName = await screen.findByText("Halloween");
   expect(categoryName).toBeTruthy();
 });

@@ -37,7 +37,9 @@ const NavBar = () => {
           aria-controls="basic-navbar-nav"
         />
         <NavLink to="/">
-          <Navbar.Brand><img src={Brand} width={80} alt="brand"></img></Navbar.Brand>
+          <Navbar.Brand>
+            <img src={Brand} width={80} alt="brand"></img>
+          </Navbar.Brand>
         </NavLink>
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="navbar-nav ms-auto mb-2 mb-lg-0">
@@ -46,7 +48,10 @@ const NavBar = () => {
                 <NavLink className="nav-link" to="/" onClick={handleSignOut}>
                   <i className="fas fa-sign-out-alt"></i>Sign out
                 </NavLink>
-                <NavLink className="nav-link" to={`/profiles/${currentUser?.profile_id}/bookmarks`}>
+                <NavLink
+                  className="nav-link"
+                  to={`/profiles/${currentUser?.profile_id}/bookmarks`}
+                >
                   <i className={`fas fa-bookmark`} />
                 </NavLink>
                 <NavLink className="nav-link" to={`/profiles/`}>

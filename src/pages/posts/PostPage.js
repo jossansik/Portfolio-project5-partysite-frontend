@@ -11,7 +11,7 @@ function PostPage() {
   const { id } = useParams();
   const currentUser = useCurrentUser();
   const [post, setPost] = useState({ results: [] });
-  const [comments, setComments] = useState({ results: [] })
+  const [comments, setComments] = useState({ results: [] });
   const [category, setCategory] = useState(null);
 
   useEffect(() => {
@@ -22,7 +22,7 @@ function PostPage() {
           axiosReq.get(`api/comments/?post=${id}`),
         ]);
         setPost({ results: [post] });
-        setComments(comments)
+        setComments(comments);
         const categoryResult = await axiosReq.get(
           "api/categories/" + post.category
         );

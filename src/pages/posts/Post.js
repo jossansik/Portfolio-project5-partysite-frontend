@@ -103,7 +103,7 @@ const Post = (props) => {
     } catch (err) {
       console.log(err);
     }
-    bookmarkUnmarked()
+    bookmarkUnmarked();
   };
 
   return (
@@ -145,8 +145,7 @@ const Post = (props) => {
               <i className="far fa-heart" />
             </OverlayTrigger>
           )}
-          <span className="pe-2">
-          {likes_count}</span>
+          <span className="pe-2">{likes_count}</span>
           {is_owner ? (
             <OverlayTrigger
               placement="top"
@@ -170,9 +169,7 @@ const Post = (props) => {
               <i className="far fa-heart" />
             </OverlayTrigger>
           )}
-          <span className="pe-2">
-            {bookmarks_count}
-          </span>
+          <span className="pe-2">{bookmarks_count}</span>
           <Link to={`/posts/${id}`}>
             <i className="far fa-comments" />
           </Link>

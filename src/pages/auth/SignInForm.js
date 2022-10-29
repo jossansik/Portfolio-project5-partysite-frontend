@@ -42,7 +42,7 @@ const SignInForm = () => {
     <>
       <Col className="m-auto p-0 p-md-2" md={6}>
         <Container className={`p-4 `}>
-          <h1>Sign in</h1>
+          <h1>Log in</h1>
           <Form onSubmit={handleSubmit}>
             <div className="mb-3">
               <Form.Group controlId="username">

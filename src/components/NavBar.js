@@ -38,7 +38,7 @@ const NavBar = () => {
         />
         <NavLink to="/">
           <Navbar.Brand>
-            <img src={Brand} width={160} alt="brand"></img>
+            <img src={Brand} width={160} alt="brand" loading="lazy"></img>
           </Navbar.Brand>
         </NavLink>
         <Navbar.Collapse id="basic-navbar-nav">

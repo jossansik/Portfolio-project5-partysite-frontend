@@ -120,7 +120,7 @@ function PostCreateForm() {
             )}
           </Form.Group>
           <Form.Group className="mb-3">
-            <Form.Label>Content</Form.Label>
+            <Form.Label>Description</Form.Label>
             <Form.Control
               as="textarea"
               rows={6}

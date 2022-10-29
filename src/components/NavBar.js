@@ -46,7 +46,7 @@ const NavBar = () => {
             {currentUser ? (
               <>
                 <NavLink className="nav-link" to="/" onClick={handleSignOut}>
-                  <i className="fas fa-sign-out-alt pe-2"></i>Sign out
+                  <i className="fas fa-sign-out-alt pe-2"></i>Log out
                 </NavLink>
                 <NavLink
                   className="nav-link"
@@ -61,7 +61,7 @@ const NavBar = () => {
             ) : (
               <>
                 <NavLink className="nav-link" to="/signin">
-                  <i className="fas fa-sign-in-alt pe-2"></i>Sign in
+                  <i className="fas fa-sign-in-alt pe-2"></i>Log in
                 </NavLink>
                 <NavLink to="/signup" className="nav-link">
                   <i className="fas fa-user-plus pe-2"></i>Sign up

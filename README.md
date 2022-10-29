@@ -148,6 +148,10 @@ Profile edit page:
 
 ![image](https://user-images.githubusercontent.com/92020968/198822212-f6af1e15-eb56-407e-bb75-491d567f023a.png)
 
+Sign up account page:
+
+![image](https://user-images.githubusercontent.com/92020968/198822447-08dcc595-eb2f-4470-b3aa-fa0d879cac5a.png)
+
 ## Testing
  
 ### React tests

@@ -50,7 +50,7 @@ function CommentCreateForm(props) {
           />
         </InputGroup>
         <button
-          className={`mt-2 btn btn-dark btn-lg`}
+          className={`mt-2 btn btn-dark mb-2`}
           disabled={!content.trim()}
           type="submit"
         >

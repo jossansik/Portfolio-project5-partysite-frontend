@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Image } from "react-bootstrap";
+import { Button, Image, Row } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import Col from "react-bootstrap/Col";
 import CloudImage from "../../assets/cloudy.webp";
@@ -30,13 +30,15 @@ const HomePage = () => {
   return (
     <Col className="m-auto py-2 p-0 p-lg-2" md={6}>
       <Image
-        className="rounded mx-auto d-block img-responsive"
+        className="rounded mx-auto d-block img-responsive mb-2"
         src={CloudImage}
       />
       {getCategories().map((category) => (
-        <div className="row" key={category.id}>
+        <Row key={category.id}>
           <div className="text-center">
-            <div test-id={`category_page_${category.id}`}>{category.name}</div>
+            <div test-id={`category_page_${category.id}`}>
+              <h2>{category.name}</h2>
+            </div>
             <NavLink to={`/categories/${category.id}`}>
               <Image
                 className="rounded mx-auto d-block img-responsive"
@@ -44,17 +46,21 @@ const HomePage = () => {
               />
             </NavLink>
           </div>
-        </div>
+        </Row>
       ))}
-      <div className="row">
-        <div className="text-center">
+      <Row>
+        <div className="text-center mt-2">
           {allCategories ? (
-            <button onClick={showAllCategories}>SHOW TOP THEMES</button>
+            <Button className="btn btn-dark" onClick={showAllCategories}>
+              SHOW TOP THEMES
+            </Button>
           ) : (
-            <button onClick={showAllCategories}>SEE ALL THEMES</button>
+            <Button className="btn btn-dark" onClick={showAllCategories}>
+              SEE ALL THEMES
+            </Button>
           )}
         </div>
-      </div>
+      </Row>
     </Col>
   );
 };

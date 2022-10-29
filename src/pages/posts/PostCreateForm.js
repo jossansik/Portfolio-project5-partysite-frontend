@@ -142,14 +142,14 @@ function PostCreateForm() {
               {message}
             </Alert>
           ))}
-          <Button className="btn btn-dark btn-lg float-end" type="submit">
-            Create
-          </Button>
           {errors?.image?.map((message, idx) => (
             <Alert variant="warning" key={idx}>
               {message}
             </Alert>
           ))}
+          <Button className="btn btn-dark" type="submit">
+            Create
+          </Button>
         </Container>
       </Form>
     </Col>

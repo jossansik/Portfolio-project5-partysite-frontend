@@ -32,6 +32,7 @@ const HomePage = () => {
       <Image
         className="rounded mx-auto d-block img-responsive mb-2"
         src={CloudImage}
+        alt={`Home image`}
       />
       {getCategories().map((category) => (
         <Row key={category.id}>
@@ -43,6 +44,7 @@ const HomePage = () => {
               <Image
                 className="rounded mx-auto d-block img-responsive"
                 src={category.image}
+                alt={`Category image ${category.id}`}
               />
             </NavLink>
           </div>

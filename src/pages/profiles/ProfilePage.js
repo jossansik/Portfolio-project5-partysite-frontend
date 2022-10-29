@@ -37,7 +37,7 @@ function ProfilePage() {
     <>
       <Row className="px-3 text-center">
         <div>
-          <Image roundedCircle src={profileData?.image} />
+          <Image roundedCircle src={profileData?.image} alt="Profile image" />
         </div>
         <div>
           <h3 className="m-2">{profileData?.owner}</h3>

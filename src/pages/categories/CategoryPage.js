@@ -113,6 +113,7 @@ const CategoryPage = () => {
                   src={post.image}
                   className="img-responsive"
                   thumbnail={true}
+                  alt={post.title}
                 />
               </NavLink>
             </div>

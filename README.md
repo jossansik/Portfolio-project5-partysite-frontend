@@ -11,20 +11,29 @@ PartyDimension social community and inspirational website
 * [Features & site goals](https://github.com/jossansik/Portfolio-project5-partysite-frontend#Features-&-site-goals)
 * [Site experience](https://github.com/jossansik/Portfolio-project5-partysite-frontend#Site-experience)
 * [Testing](https://github.com/jossansik/Portfolio-project5-partysite-frontend#Testing)
-* [Bugs](https://github.com/jossansik/Portfolio-project5-partysite-frontend#Bugs)
+* [Issues](https://github.com/jossansik/Portfolio-project5-partysite-frontend#Issues)
 * [Validator testing](https://github.com/jossansik/Portfolio-project5-partysite-frontend#Validator-testing)
 * [Accessibility](https://github.com/jossansik/Portfolio-project5-partysite-frontend#Accessibility)
 * [Deployment](https://github.com/jossansik/Portfolio-project5-partysite-frontend#Deployment)
 * [Credits](https://github.com/jossansik/Portfolio-project5-partysite-frontend#Credits)
  
 ## About this project
- 
 This project is a a content-sharing web application with React and an API (Django Rest Framework) Back-End. This allows the users to browse and comment/like each other's content as well as add and delete their own. The users can also bookmark content.
-This project is built on the concept of a user-driven community/inspirational platforn/website with images and creative ideas relating to everything about throwing parties and other social events.
+
+The basic concept of this website is: user built, user driven. Meaning that the main asset of the site will be the users' own contributed material and that the interactions between the users and the integrated technologies should be meaningful, informative and results driven.
+
+Party themed, having different choices of themes for parties is the main concept.
+
+Features and functionalities include Sharing and collecting. Sharing your own ideas and thoughts, collecting and saving others ideas for the future.
+
+Because of the wide span of the subject, the target group is very broad and multifaceted in terms of age and other demographics.
+
 This site is for everyone who is looking for creative ideas or tips about everything concearning parties and other social events. A user can be anybody thinking of throwing parties or just looking for inspiration for the future. Guiding principles for the website will be family-friendly, fun, creative & inspiring.
-The project is divided into two repositories, this one for the front-end (this) and one for the back-end, found [here](https://github.com/jossansik/Portfolio-project5-partysite-backend).
-As Agile methodology during the development process of planning and designing this project Github Issues was used for user stories and Github Projects for kanban board.
- 
+
+Goal - The goal for this project was To build a community that make it easy and fun for party planners and guest to organize and find ideas, to inspire creativity and make the process more fun and exciting.
+
+The project is divided into two repositories, this one for the front-end (this) and one for the back-end, found [here](https://github.com/jossansik/Portfolio-project5-partysite-backend). As Agile methodology during the development process of planning and designing this project Github Issues was used for user stories and Github Projects for kanban board.
+
 The board is found [here](https://github.com/users/jossansik/projects/7)
  
 The project is deployed through [Heroku](https://heroku.com) and accessed at https://partysite-api.herokuapp.com/.
@@ -34,6 +43,7 @@ The project is deployed through [Heroku](https://heroku.com) and accessed at htt
 This project is built with React+Bootstrap (HTML+CSS+Javscript), using [Heroku Postgres](https://www.heroku.com/postgres) as relational database. The application is run, operated and deployed through Heroku.
  
 Images and media are uploaded and stored through [Cloudinary](https://cloudinary.com).
+
 ## Setup project locally
  
 ### Pre-requirements:
@@ -49,10 +59,21 @@ VS Code, node and yarn or npm.
 - cmd: 'yarn install' - To get all packages installed
 - cmd: 'yarn start' - To start webserver
 - cmd: 'yarn test' - To run all tests
+
 ## UX design
- 
+
 The UX design work process for this project is found in [this](https://www.figma.com/file/UE6Mi3sEHRQiKXhjAvIpzH/UX-for-PartyDimension?node-id=0%3A1) FigJam file.
- 
+
+Illustrations are made by me.
+
+These are some high fidelity wireframes made in Figma, they are not exactly like the end product but more of a concept visualization:
+
+![Start Page](https://user-images.githubusercontent.com/92020968/198819991-42ef9c48-1980-46af-8d12-200eedfe456f.png)
+![Category - Halloween](https://user-images.githubusercontent.com/92020968/198820007-09c1ab37-ba78-4c01-8132-f8f1a5010c4a.png)
+![Fluffys profile](https://user-images.githubusercontent.com/92020968/198820011-0cc77bc9-1ba8-4016-b80e-7faee7b3a3c9.png)
+![Bookmarks sorting](https://user-images.githubusercontent.com/92020968/198820026-6358279d-7917-414a-b513-9bd34f450938.png)
+![View post](https://user-images.githubusercontent.com/92020968/198820034-47a1e952-0de7-424d-96c0-6cb645a3d238.png)
+
 ### Business Vision:
  
 Description: The vision is to create an inspiring, user-driven web community for everyone who is looking for creative ideas or tips about everything concearning parties and other social events. A user can be anybody thinking of throwing parties or just looking for inspiration for the future. Guiding principles for the website will be family-friendly, fun, creative and inspiring.
@@ -69,12 +90,19 @@ Product: An inspirational party themed DIY web site/content-sharing platform.
  
 ### User goals
  
-Users can view the content on the site to get inspiration and ideas
-Users can log in and access their profile page
-Users can upload and share their own content
-User can bookmark other users content and thereby build a collection
-... some more...
- 
+- Users can view categories
+- Users can filter posts within a category by tags
+- Users can view the content on the site to get inspiration and ideas
+- Users can comment on posts
+- Users can log in and access their profile page
+- Users can upload and share their own content
+- Users can bookmark other users content and thereby build a collection
+- Users can view their bookmarked posts
+- Users can like content
+- Users can edit their profile
+- Users can delete their posts
+- Users can log out
+
 ### Site admin goals
 Features for (staff) adminwebsite
 
@@ -84,7 +112,41 @@ Features for (staff) adminwebsite
 ## User experience
 Features for user
 
-- ....
+Start page:
+
+![image](https://user-images.githubusercontent.com/92020968/198821780-9fdb3af5-1f68-4ab2-b9a2-20a046fbd5e3.png)
+
+Log in page:
+
+![image](https://user-images.githubusercontent.com/92020968/198821922-31b22817-0db4-49d0-9ba8-5182f229c294.png)
+
+Category page:
+
+![image](https://user-images.githubusercontent.com/92020968/198821940-cbc323fb-695c-4726-90d0-428aae1deff4.png)
+
+Add post page:
+
+![image](https://user-images.githubusercontent.com/92020968/198821970-1ac1e119-73db-4dc3-aa3a-22a5818e866c.png)
+
+View post page (as post owner, delete post availability).
+
+As seen user can like/bookmark/comment on the post as long as they are not the post owner:
+
+![image](https://user-images.githubusercontent.com/92020968/198821989-23bc46fb-785f-4ac6-8ae7-f05853bac77c.png)
+
+Profile page
+
+User see list of their own posts with option to delete and navigate to edit profile page:
+
+![image](https://user-images.githubusercontent.com/92020968/198822048-8996e71b-3066-4c23-a407-24527ad0d122.png)
+
+Bookmarked posts page:
+
+![image](https://user-images.githubusercontent.com/92020968/198822147-ed99a792-8451-44b4-8dab-348b1e425df0.png)
+
+Profile edit page:
+
+![image](https://user-images.githubusercontent.com/92020968/198822212-f6af1e15-eb56-407e-bb75-491d567f023a.png)
 
 ## Testing
  
@@ -122,14 +184,14 @@ The project uses bootstrap to get a neat way to handle boostrap in react with bo
 
 ## Issues
 
-### Cookie 3d party mobile
+### Cookie 3rd party mobile
 Due to project requirements with website in separate domains the cookie cannot be shared and therefore it is a problem in Safari and mobile which does not allow cross-site tracking. It is however possible to turn it of in mobile, here is how you do it:
-IMG
+![image](https://user-images.githubusercontent.com/92020968/198820423-ff5a080f-0b00-4e5f-ab5c-0fe6358f2e40.png)
 
 If the task did not require multiple projects I would have used an approach where I had put the website in the same domain with a proxy.
 
-### Website logout
-It is not possible to 
+### Admin web and website cookie
+A known issue is that if a administrator log in to admin web and then visits website the cookie is not valid so the admin has to log out before using website.
 
 ## Validator testing
  
@@ -142,7 +204,7 @@ Jigsaw warns about google font import which is as expected.
 Document checking completed. No errors or warnings to show.
  
 ## Accessibility
-TODO
+![image](https://user-images.githubusercontent.com/92020968/198821716-fe60939e-6a6a-4e00-8e6d-333744fb61ab.png)
 
 ## Deployment
  
@@ -152,13 +214,19 @@ Initial step for creating a app in Heroku:
 - Named the app "partysite-api"
 - Selected region (Europe), then clicked “Create app”.
 
+Using Heroku for deployment, here is the overview:
+
+![image](https://user-images.githubusercontent.com/92020968/198822260-f7722c03-164e-4cf5-af5a-b52da18aa174.png)
+
+The settings in Heroku for my app:
+
+![image](https://user-images.githubusercontent.com/92020968/198822286-800114ae-c13c-4dfd-907d-9a898712eeca.png)
+
 ## Credits
 Wireframes and mockups, as well as images and vectors used on the website were made using [Figma](https://figma.com/)
 
 The icons are from [this](https://fontawesome.com/) Font awesome
- 
-Data schema is created with [graphviz](https://graphviz.org/)
 
-Alot of code is based on this project [drf-api](https://github.com/Code-Institute-Solutions/drf-api)
+Alot of code is based on this project [moments](https://github.com/Code-Institute-Solutions/moments)
 
 The images uploaded to the site are from Adobe stock and royalty free

@@ -88,7 +88,7 @@ const ProfileEditForm = () => {
         </Alert>
       ))}
       <Button type="submit" className="btn btn-dark btn-lg float-end mt-2">
-        Spara
+        Save
       </Button>
     </>
   );

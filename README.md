@@ -34,7 +34,7 @@ Goal - The goal for this project was To build a community that make it easy and 
 
 The project is divided into two repositories, this one for the front-end (this) and one for the back-end, found [here](https://github.com/jossansik/Portfolio-project5-partysite-backend). As Agile methodology during the development process of planning and designing this project Github Issues was used for user stories and Github Projects for kanban board.
 
-The board is found [here](https://github.com/users/jossansik/projects/7)
+The project board is found [here](https://github.com/users/jossansik/projects/7)
  
 The project is deployed through [Heroku](https://heroku.com) and accessed at https://partysite-api.herokuapp.com/.
  
@@ -215,7 +215,7 @@ Document checking completed. No errors or warnings to show.
 Initial step for creating a app in Heroku:
  
 - Created an account on Heroku.com (from the Heroku dashboard clicked the “Create new app” button).
-- Named the app "partysite-api"
+- Named the app "partysite"
 - Selected region (Europe), then clicked “Create app”.
 
 Using Heroku for deployment, here is the overview:
